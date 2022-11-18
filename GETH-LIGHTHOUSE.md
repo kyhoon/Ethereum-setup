@@ -85,14 +85,16 @@ In the example [`geth.json`](./geth.json) the CHAIN_ID = 4242.
 
 5. override the `terminalTotalDifficulty` to `60000000` or some other value that is bigger than 0. Make sure that you make a mental note of this value so that we can reuse it when setting up the CL, in this case the Lighthouse.
 
-6. Generate a valid account using your favorite tool, take note of the address.  here are 3 options:
+6. Initialize geth from the json: geth init --datadir ~/.ethereum/local-testnet/testnet/geth-node-1 ~/path/to/ethereum-genesis-generator/data/el/geth.json
+
+7. Generate a valid account using your favorite tool, take note of the address.  here are 3 options:
     1. `ethkey generate` + geth’s —nodekey
     2. geth console + eth.newAccount
     3. create a new address in something like metamask.
    
-7. Now, copy the private key inside a geth console session (`geth --datadir ~/.ethereum/${folder-Name}/privnet/geth-node-1 console`) and then run `web3.personal.importRawKey("<Private Key>","<Password>")`
+8. Now, copy the private key inside a geth console session (`geth --datadir ~/.ethereum/${folder-Name}/privnet/geth-node-1 console`) and then run `web3.personal.importRawKey("<Private Key>","<Password>")`
 
-8. Check the node starts to mine and kill it quickly. You only have 100 blocks until fork is enabled and 400 blocks until node stops mining
+9. Check the node starts to mine and kill it quickly. You only have 100 blocks until fork is enabled and 400 blocks until node stops mining
 ```bash 
 geth --datadir ~/.ethereum/local-testnet/testnet/geth-node-1 --networkid 4242 --http --http.port 8545 --http.api \
 personal,eth,net,web3,engine,debug --discovery.dns "" --port 30303 --mine --miner.etherbase=<address> --miner.threads 1 \
