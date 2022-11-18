@@ -138,7 +138,9 @@ git clone git@github.com:sigp/lighthouse.git
 
 3. install lighthouse and lcli:
     1. make
-    2. make install-lcli  
+        - in this process you may need to deal with rust compiling issues, like the maximum recursion limit. Follow the instructions given by cargo to add the necessary attributes to the source files. (e.g. #![recursion_limit = "256"]) 
+    3. make install-lcli
+
 
 
 ### Run and hope for the best
